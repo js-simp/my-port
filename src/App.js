@@ -1,10 +1,12 @@
 import './App.css';
+import Summary from './Summary';
 
 function App() {
   return (
-    <div>
-      <h1>My Investment Portfolio</h1>
+    <div className = "Summary">
+      <Summary/>
     </div>
+    
   );
 }
 
