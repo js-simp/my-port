@@ -1,24 +1,71 @@
-import React from 'react'
-
+import {useState} from 'react';
+import {Pie} from '@visx/shape';
+import {Group} from '@visx/group';
+import {Text} from '@visx/text';
 
 function Summary() {
 
+  const [active, setActive] = useState(null);
+
   //Investment Classes
-  //RE - Real Estate , BI - Business Income, Bul - Bullion, CR-Credit, 
+  //RE - Real Estate , BI - Business Income, Bul - Bullion, CR-Credit,
+  const asset_color = {
+    'RE' : '#a3d1b3',
+      'BI' : '#86bace',
+      'Bul':  '#fae087',
+      'CR' : '#9a26ff',
+      'CRY':'#f26d5b',
+      'SE' :'#fcf5e1'
+} 
   const data = [
-    {angle : 36, label:'RE', innerRadius : 200, radius : 300},
-    {angle : 18, label : 'BI', innerRadius : 200, radius : 300},
-    {angle : 1.5, label:'Bul', innerRadius : 200 , radius : 300},
-    {angle : 1.5, label:'CR', innerRadius : 200 , radius : 300},
-    {angle : 1.5, label:'CRY', innerRadius : 200 , radius : 300},
-    {angle : 6, label:'SE', innerRadius : 200 , radius : 300}
+    { asset : 'RE', amount : 3600000},
+    {asset : 'BI', amount : 1500000},
+    {asset :'Bul', amount: 500000, },
+    {asset:'CR', amount : 500000, },
+    {asset:'CRY', amount : 900000, },
+    {asset:'SE', amount : 300000, }
   ];
 
-  
+  const width = 400;
   return (
-    <div>
-      <h1>My Investment Porfolio</h1>
-    </div>
+    <svg width ={width} height = {width} >
+      <Group top = {width/2} left = {width/2}>
+        <Pie data = {data} pieValue = {(data)=> data.amount} 
+        outerRadius = {width/2  -3} innerRadius = {width/2 - 30}
+        cornerRadius = {3}
+        padAngle = {0.005}>
+          {(pie)=> {
+            return pie.arcs.map((arc) =>{
+              // console.log(arc);
+              return(
+              <g key= {arc.data.asset} 
+              onMouseEnter = {() => setActive(arc.data)}
+              onMouseLeave = {() => setActive(null)}
+              >
+                <path d= {pie.path(arc)} fill = {asset_color[arc.data.asset]} 
+                >  
+                </path>
+              </g>
+              )
+            })
+          }}
+        </Pie>
+        { active? (
+          <>
+            <Text fontSize={30} textAnchor = 'middle' fill = '#000000'>
+            {`LKR ${active.amount}`}
+            </Text>
+          </>
+        ) :(
+          <>
+          <Text fontSize={30} textAnchor = 'middle' fill = '#000000'>
+          {`LKR ${data.reduce((acc,asset)=> acc + asset.amount, 0)}`}
+          </Text>
+          </>
+        )}
+        
+      </Group>
+    </svg>
   )
 }
 
