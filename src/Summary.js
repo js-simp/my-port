@@ -1,8 +1,8 @@
 import React from 'react'
-import '../node_modules/react-vis/dist/style.css';
-import {RadialChart} from 'react-vis';
+
 
 function Summary() {
+
   //Investment Classes
   //RE - Real Estate , BI - Business Income, Bul - Bullion, CR-Credit, 
   const data = [
@@ -14,11 +14,11 @@ function Summary() {
     {angle : 6, label:'SE', innerRadius : 200 , radius : 300}
   ];
 
+  
   return (
-    <RadialChart
-  data={data}
-  width={500}
-  height={500} />
+    <div>
+      <h1>My Investment Porfolio</h1>
+    </div>
   )
 }
 
