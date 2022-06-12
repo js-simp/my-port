@@ -2,7 +2,7 @@ import {useState} from 'react';
 import {Pie} from '@visx/shape';
 import {Group} from '@visx/group';
 import {Text} from '@visx/text';
-import {Connector} from '@visx/annotation';
+import {Annotation, Label, Connector} from '@visx/annotation';
 
 function Summary() {
 
@@ -19,7 +19,7 @@ function Summary() {
       'SE' :'#fcf5e1'
 } 
   const data = [
-    { asset : 'RE', amount : 3600000},
+    { asset : 'RE', amount : 2000000},
     {asset : 'BI', amount : 1500000},
     {asset :'Bul', amount: 500000},
     {asset:'CR', amount : 500000},
@@ -36,16 +36,41 @@ function Summary() {
     }
   }
 
-  function pathCenter(pathElem) {
-    return {x:10, y : 50};
+  const width = 600;
+  const pie_radius = 200;
+
+  function pathCenter(arc) {
+    let arc_center = (arc.endAngle - arc.startAngle)/2;
+    let total_angle = arc_center + arc.startAngle;
+    let x = pie_radius * Math.sin(total_angle)
+    let y = pie_radius * Math.cos(total_angle)
+    return {'x':x, 'y' : -y};
   }
 
-  const width = 400;
+  function getDx(arc) {
+    let arc_center = (arc.endAngle - arc.startAngle)/2;
+    let total_angle = arc_center + arc.startAngle;
+    if(total_angle > 3.14){
+      return -50
+    }
+    else {
+      return 50
+    }
+  }
+
+  function getDy(arc) {
+    if(pathCenter(arc).y > 0) {
+      return 20}
+      else {
+        return -20
+      }
+  }
+
   return (
     <svg width ={width} height = {width}>
       <Group top = {width/2} left = {width/2}>
         <Pie data = {data} pieValue = {(data)=> data.amount} 
-        outerRadius = {width/2  -3} innerRadius = {width/2 - 30}
+        outerRadius = {pie_radius  -3} innerRadius = {pie_radius - 30}
         cornerRadius = {3}
         padAngle = {0.005}>
           {(pie)=> {
@@ -60,7 +85,14 @@ function Summary() {
                 strokeWidth = {2}
                 >  
                 </path>
-                <Connector x = {-190} y = {0} dx = {-50} dy = {-10} stroke = 'black'/>
+                <Connector x = {pathCenter(arc).x} y = {pathCenter(arc).y} 
+                dx = {getDx(arc)} 
+                dy = {getDy(arc)} 
+                stroke = 'black'/>
+                <Label title = {arc.data.asset} x = {pathCenter(arc).x + getDx(arc)}
+                y = {pathCenter(arc).y + getDy(arc) } verticalAnchor = 'middle'
+                horizontalAnchor = {getDx(arc) > 0 ? ('start') : ('end')}
+                />
               </g>
               )
             })
