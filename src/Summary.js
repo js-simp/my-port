@@ -2,10 +2,10 @@ import {useState} from 'react';
 import {Pie} from '@visx/shape';
 import {Group} from '@visx/group';
 import {Text} from '@visx/text';
-import {Annotation, Label, Connector} from '@visx/annotation';
+import {Label, Connector} from '@visx/annotation';
 
-function Summary() {
-
+function Summary(props) {
+  const data = props.data;
   const [active, setActive] = useState(null);
 
   //Investment Classes
@@ -18,15 +18,7 @@ function Summary() {
       'CRY':'#f26d5b',
       'SE' :'#fcf5e1'
 } 
-  const data = [
-    { asset : 'RE', amount : 2000000},
-    {asset : 'BI', amount : 1500000},
-    {asset :'Bul', amount: 500000},
-    {asset:'CR', amount : 500000},
-    {asset:'CRY', amount : 900000},
-    {asset:'SE', amount : 300000}
-  ];
-
+ 
   function addOutline(data) {
     if (data.asset === active.asset){
       return 'black'
@@ -67,8 +59,8 @@ function Summary() {
   }
 
   return (
-    <svg width ={width} height = {width}>
-      <Group top = {width/2} left = {width/2}>
+    <svg width ={width} height = {width} >
+      <Group top = {width/2} left = {width/2} fill = 'black'>
         <Pie data = {data} pieValue = {(data)=> data.amount} 
         outerRadius = {pie_radius  -3} innerRadius = {pie_radius - 30}
         cornerRadius = {3}
