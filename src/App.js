@@ -1,6 +1,6 @@
 import './App.css';
 import Summary from './Summary';
-import Securities from './Securities'
+import Securities from './Securities';
 
 function App() {
   const data = [
@@ -19,6 +19,7 @@ function App() {
     <div className = "Securities">
     <Securities/>
   </div>
+    
   );
 }
 
