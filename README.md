@@ -1,10 +1,11 @@
 #My-port Description
-My-port is an online portfolio tracker for investors. This app is a place where users can upload their assets such as 
-1)Real Estate ( land, Houses, etc)
-2)Securities (Fixed deposits, stock, Index fund, Money Market, Treasury bonds, etc.)
-3)Gold
-4)Cryptocurrency
-5)Business Income
+My-port is an online portfolio tracker for investors. This app is a place where users can upload their assets such as:
+1) Real Estate ( land, Houses, etc)
+2) Securities (Fixed deposits, stock, Index fund, Money Market, Treasury bonds, etc.)
+3) Gold
+4) Cryptocurrency
+5) Business Income
+
 Users will be able to easily check the summary of the appreciation/depreciation of their assets. And also they will be able to easily keep track of how individual assets are doing, without having to do any calculations, manually observe market values ,etc. 
 
 #Stuff to do
