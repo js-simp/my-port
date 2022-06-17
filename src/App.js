@@ -20,7 +20,9 @@ function App() {
     <div>
       {
         asset === null ?
+        <div className = 'Summary'>
         <Summary data = {data} setSecurity = {setAsset}/>
+        </div>
         : asset === 'SE' ?
           <Securities setSecurity = {setAsset}/> 
         : asset === 'RE' ?
