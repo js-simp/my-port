@@ -1,6 +1,8 @@
 import './App.css';
 import Summary from './Summary';
 import Securities from './Securities';
+import RealEstate from './RealEstate.js'
+import {useState} from 'react';
 
 function App() {
   const data = [
@@ -12,15 +14,24 @@ function App() {
     {asset:'SE', amount : 300000, growth : 21.0}
   ];
 
+  const [asset, setAsset] = useState(null);
+
   return (
-    // <div className = "Summary">
-    //   <Summary data = {data}/>
-    // </div>
-    <div className = "Securities">
-    <Securities/>
-  </div>
+    <div>
+      {
+        asset === null ?
+        <div className = 'Summary'>
+        <Summary data = {data} setSecurity = {setAsset}/>
+        </div>
+        : asset === 'SE' ?
+          <Securities setSecurity = {setAsset}/> 
+        : asset === 'RE' ?
+          <RealEstate setRealEstate = {setAsset}/>  
+        : null  
+      }
+    </div>
     
   );
-}
+    }
 
 export default App;

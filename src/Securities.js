@@ -12,7 +12,6 @@ function Securities(props) {
     {asset : 'Index Fund', id: 6, initiated : '10/11/2021', period_in_years : 10, growth : 18.9, amount : '10,000'}
 ]
 
-
   const setSecurity = props.setSecurity;
 
 

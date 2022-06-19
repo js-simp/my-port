@@ -6,6 +6,7 @@ import {Label, Connector} from '@visx/annotation';
 
 function Summary(props) {
   const data = props.data;
+  const setSecurity = props.setSecurity;
   const [active, setActive] = useState(null);
 
   //Investment Classes
@@ -58,7 +59,7 @@ function Summary(props) {
       }
   }
 
-  return (
+  return (    
     <svg width ={width} height = {width} >
       <Group top = {width/2} left = {width/2} fill = 'black'>
         <Pie data = {data} pieValue = {(data)=> data.amount} 
@@ -71,8 +72,9 @@ function Summary(props) {
               <g key= {arc.data.asset} 
               onMouseEnter = {() => setActive(arc.data)}
               onMouseLeave = {() => setActive(null)}
+              onClick = {(event) => setSecurity(event.target.id)}
               >
-                <path d= {pie.path(arc)} fill = {asset_color[arc.data.asset]} 
+                <path id={arc.data.asset} d= {pie.path(arc)} fill = {asset_color[arc.data.asset]} 
                 stroke = {active ? (addOutline(arc.data)): 'none'}
                 strokeWidth = {2}
                 >  

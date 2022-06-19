@@ -2,9 +2,15 @@
 
 import React from 'react'
 
-function RealEstate() {
+function RealEstate(props) {
+  const setRealEstate = props.setRealEstate;
   return (
+    <div>
+    <nav>
+      <button onClick={() => setRealEstate(null)}>Summary</button>
+    </nav>
     <div>RealEstate</div>
+    </div>
   )
 }
 

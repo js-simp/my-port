@@ -9,7 +9,7 @@ My-port is an online portfolio tracker for investors. This app is a place where 
 Users will be able to easily check the summary of the appreciation/depreciation of their assets. And also they will be able to easily keep track of how individual assets are doing, without having to do any calculations, manually observe market values ,etc. 
 
 # Stuff to do
-1) Extracing real estate statistics in sri lanka by webscraping websites such as ikman, patpat, and lankawebproperty. 
+1) Extracing real estate statistics in sri lanka by webscraping websites such as ikman, patpat, and lankawebproperty. ---**Musthafa is working on this**
 2) Creating card carousal for asset cards in Slides.js
 3) Extracting real time gold rate in sri lanka (web scraping? or API available?)
 4) Implement a UI and form for user to input new assets such as Securities, Gold, etc. 
