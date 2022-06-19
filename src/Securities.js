@@ -2,7 +2,7 @@
 import React from 'react';
 import Slides from './Slides'
 
-function Securities() {
+function Securities(props) {
   const my_securities = [
     {asset : 'Fixed Depost', id: 1, initiated : '10/11/2021', period_in_years : 2, growth : 17.5, amount : '10,000'},
     {asset : 'Money Market', id: 2, initiated : '06/01/2020', period_in_years : 0.5, growth : 12, amount : '10,000'},
@@ -12,12 +12,16 @@ function Securities() {
     {asset : 'Index Fund', id: 6, initiated : '10/11/2021', period_in_years : 10, growth : 18.9, amount : '10,000'}
 ]
 
+const setSecurity = props.setSecurity;
 
-  return (
-    
-      <Slides securities = {my_securities}/>
 
-  )
-}
-
-export default Securities
+return (
+    <div>
+        <nav>
+            <button onClick={
+                () => setSecurity(null)
+            }>Summary</button>
+        </nav>
+        <Slides securities={my_securities}/>
+    </div>
+)}export default Securities
