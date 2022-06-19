@@ -12,16 +12,18 @@ function Securities(props) {
     {asset : 'Index Fund', id: 6, initiated : '10/11/2021', period_in_years : 10, growth : 18.9, amount : '10,000'}
 ]
 
-const setSecurity = props.setSecurity;
+
+  const setSecurity = props.setSecurity;
 
 
-return (
+  return (
     <div>
-        <nav>
-            <button onClick={
-                () => setSecurity(null)
-            }>Summary</button>
-        </nav>
-        <Slides securities={my_securities}/>
+    <nav>
+      <button onClick={() => setSecurity(null)}>Summary</button>
+    </nav>
+      <Slides securities = {my_securities}/>
     </div>
-)}export default Securities
+  )
+}
+
+export default Securities
