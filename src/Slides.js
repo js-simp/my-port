@@ -17,7 +17,7 @@ const responsive = {
             max: 2150,
             min: 1024
         },
-        items: 5
+        items: 3
     },
     tablet: {
         breakpoint: {
@@ -36,9 +36,9 @@ const responsive = {
 };
 
 const my_securities = props.securities;
-const cards = my_securities.map(security => (
+const cards = my_securities.map((security, index) => (
 
-<div className = "wrapper" key={security.id}>
+<div className = "wrapper" key={index + 1}>
 
       <div className= {`clash-card ${security.asset}`}>
         <div className="clash-card__image">
@@ -50,12 +50,12 @@ const cards = my_securities.map(security => (
         <div className="clash-card__unit-stats clearfix">
 
           <div className="sixty" >
-            <div className="stat">${security.growth}</div>
+            <div className="stat">{`${security.growth}%`}</div>
             <div className="stat-value">Growth</div>
           </div>
 
           <div className="thirty no-border">
-            <div className="stat">${security.period_in_years}</div>
+            <div className="stat">{`${security.period_in_years}`}</div>
             <div className="stat-value">Years</div>
           </div>
 
@@ -71,7 +71,7 @@ const cards = my_securities.map(security => (
   <Carousel responsive = {responsive}
       swipeable={true}
       draggable={false}
-      showDots={props.deviceType !== "mobile" ? false : true}
+      showDots={true}
       ssr={false} // means to render carousel on server-side.
       infinite={true}
       autoPlay={props.deviceType !== "mobile" ? true : false}
