@@ -1,7 +1,8 @@
 import './App.css';
 import Summary from './Summary';
-import Securities from './Securities';
-import RealEstate from './RealEstate.js'
+import Securities from './Assets/Securities';
+import RealEstate from './Assets/RealEstate.js'
+import Authentication from './Components/Authentication'
 import {useState} from 'react';
 
 function App() {
@@ -15,23 +16,32 @@ function App() {
   ];
 
   const [asset, setAsset] = useState(null);
+  const [auth, setAuth] = useState(false);
 
-  return (
-    <div>
-      {
-        asset === null ?
-        <div className = 'Summary'>
-        <Summary data = {data} setSecurity = {setAsset}/>
-        </div>
-        : asset === 'SE' ?
-          <Securities setSecurity = {setAsset}/> 
-        : asset === 'RE' ?
-          <RealEstate setRealEstate = {setAsset}/>  
-        : null  
-      }
-    </div>
-    
-  );
+  if(auth){
+    return (
+      <div>
+        {
+          asset === null ?
+          <div className = 'Summary'>
+          <Summary data = {data} setSecurity = {setAsset}/>
+          </div>
+          : asset === 'SE' ?
+            <Securities setSecurity = {setAsset}/> 
+          : asset === 'RE' ?
+            <RealEstate setRealEstate = {setAsset}/>  
+          : null  
+        }
+      </div>
+      
+    );
+  }
+  else{
+    return (
+      <Authentication logInStatus = {setAuth}/>
+    )
+  }
+  
     }
 
 export default App;
