@@ -1,6 +1,6 @@
 //Securities investment Analytics
 import React from 'react';
-import Slides from './Slides'
+import Slides from '../Components/Slides'
 
 function Securities(props) {
   const my_securities = [
