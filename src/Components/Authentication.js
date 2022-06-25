@@ -24,6 +24,10 @@ function Authentication(props) {
         .then(function (response) {
           console.log(response)
           alert(response.data.message)
+          //set logInStatus hook in App.js to true and render Summary page
+          if(response.data.success){
+            props.logInStatus(true)
+          }
         });
     }
     else {
@@ -39,7 +43,7 @@ function Authentication(props) {
       })
       .then(function (response) {
         console.log(response);
-        alert(response.data)
+        alert(response.info.message)
       })
       .catch(function (error) {
         console.log(error);
