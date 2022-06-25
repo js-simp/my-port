@@ -22,7 +22,8 @@ function Authentication(props) {
         withCredentials: true
       })
         .then(function (response) {
-          console.log(response.data)
+          console.log(response)
+          alert(response.data.message)
         });
     }
     else {
@@ -38,6 +39,7 @@ function Authentication(props) {
       })
       .then(function (response) {
         console.log(response);
+        alert(response.data)
       })
       .catch(function (error) {
         console.log(error);
