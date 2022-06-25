@@ -13,15 +13,17 @@ function Authentication(props) {
     if(flag === 'login'){
       console.log(username, password)
       axios({
-        method: 'get',
+        method: 'post',
         url: 'http://localhost:5000/login/',
-        responseType: 'stream'
+        data: {
+          username: username,
+          password: password
+        },
+        withCredentials: true
       })
         .then(function (response) {
           console.log(response.data)
         });
-      setUsername('');
-      setPassword('')
     }
     else {
       console.log(newUser, newPass)
