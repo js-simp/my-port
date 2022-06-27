@@ -2,6 +2,7 @@ import './App.css';
 import Summary from './Summary';
 import Securities from './Assets/Securities';
 import RealEstate from './Assets/RealEstate.js'
+import Crypto from './Assets/Crypto'
 import Authentication from './Components/Authentication'
 import {useState} from 'react';
 
@@ -17,6 +18,7 @@ function App() {
 
   const [asset, setAsset] = useState(null);
   const [auth, setAuth] = useState(false);
+  const [user, setUser] = useState('')
 
   if(auth){
     return (
@@ -24,12 +26,14 @@ function App() {
         {
           asset === null ?
           <div className = 'Summary'>
-          <Summary data = {data} setSecurity = {setAsset}/>
+          <Summary data = {data} setSecurity = {setAsset} user = {user}/>
           </div>
           : asset === 'SE' ?
-            <Securities setSecurity = {setAsset}/> 
+            <Securities setSecurity = {setAsset} user = {user}/> 
           : asset === 'RE' ?
-            <RealEstate setRealEstate = {setAsset}/>  
+            <RealEstate setRealEstate = {setAsset} user = {user}/> 
+          : asset === 'CRY'?
+            <Crypto setCrypto = {setAsset} user = {user}/> 
           : null  
         }
       </div>
@@ -38,7 +42,7 @@ function App() {
   }
   else{
     return (
-      <Authentication logInStatus = {setAuth}/>
+      <Authentication logInStatus = {setAuth} setUser = {setUser}/>
     )
   }
   
