@@ -27,6 +27,7 @@ function Authentication(props) {
           //set logInStatus hook in App.js to true and render Summary page
           if(response.data.success){
             props.logInStatus(true)
+            props.setUser(username)
           }
         });
     }
