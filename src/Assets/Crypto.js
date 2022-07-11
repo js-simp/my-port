@@ -18,9 +18,8 @@ function Crypto(props) {
     // });;
 
     //----------------opening new window and listening for messages from paxful----------
-    // window features
 
-    let paxWindow = window.open(`http://localhost:5000/${props.user}/paxful/auth`, 'toolbar=false', 'menubar=false')
+    let paxWindow = window.open(`http://localhost:5000/paxful/auth`, 'toolbar=false', 'menubar=false')
     window.onmessage = (event) => {
       console.log(`Received message: ${event.data}`);
       paxWindow.close()
