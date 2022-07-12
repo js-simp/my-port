@@ -27,10 +27,17 @@ function Crypto(props) {
   } 
   }
 
+  function requestCrypto() {
+    return;
+  }
+
   return (
     <div>
       <div>Crypto</div>
-        <button onClick={() => {requestPaxful()}}>Get my paxful info!</button>
+        <div className = 'cryptoAssets'>
+          <button onClick={() => {requestPaxful()}}>Add Paxful</button>
+          <button onClick={() => {requestCrypto()}}>Add Crypto</button>
+        </div>
     </div>
     
   )

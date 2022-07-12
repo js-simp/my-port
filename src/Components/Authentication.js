@@ -44,7 +44,7 @@ function Authentication(props) {
       })
       .then(function (response) {
         console.log(response);
-        alert(response.info.message)
+        alert(response.data)
       })
       .catch(function (error) {
         console.log(error);
