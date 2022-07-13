@@ -1,22 +1,11 @@
 //Crypto investment Analytics
 
-import React from 'react'
+import React from 'react';
 import axios from 'axios';
 
 function Crypto(props) {
   function requestPaxful() {
-    // axios({
-    //   method: 'get',
-    //   url: `http://localhost:5000/paxful`,
-    //   withCredentials: true
-    // })
-    // .then(function (response) {
-    //   console.log(response);
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });;
-
+    
     //----------------opening new window and listening for messages from paxful----------
 
     let paxWindow = window.open(`http://localhost:5000/paxful/auth`, 'toolbar=false', 'menubar=false')
@@ -26,11 +15,25 @@ function Crypto(props) {
       window.focus()
   } 
   }
+  // "
 
-  function requestCrypto() {
-    return;
+  async function requestCrypto() {
+    axios({
+      method: 'post',
+      url: "http://localhost:5000/ethplorer",
+      data:{
+        address : '0xb29380ffc20696729b7ab8d093fa1e2ec14dfe2b'
+      },
+      withCredentials: true
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
-
+  
   return (
     <div>
       <div>Crypto</div>
