@@ -14,7 +14,7 @@ function Authentication(props) {
       console.log(username, password)
       axios({
         method: 'post',
-        url: 'https://localhost:3443/login/',
+        url: 'http://localhost:5000/login',
         data: {
           username: username,
           password: password
@@ -35,7 +35,7 @@ function Authentication(props) {
       console.log(newUser, newPass)
       axios({
         method: 'post',
-        url: 'https://localhost:3443/register',
+        url: 'http://localhost:5000/register',
         data: {
           username: newUser,
           password: newPass
